@@ -262,7 +262,7 @@ body .hero-wrapper::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../images/fond-1.png");
+  background-image: url("../images/fond-1-480.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
@@ -443,7 +443,7 @@ body main .presentation-2::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../images/fond-2.png");
+  background-image: url("../images/fond-2-480.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
