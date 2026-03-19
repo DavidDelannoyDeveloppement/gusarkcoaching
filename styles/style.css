@@ -1018,6 +1018,7 @@ body .site-footer .instagram-link {
   }
   body .site-footer .footer-brand {
     grid-column: 1/-1;
+    text-align: center;
   }
   body .site-footer .footer-brand p {
     max-width: 100%;
