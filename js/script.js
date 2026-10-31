@@ -56,3 +56,67 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+// ###############################
+// Transformations clients
+
+(() => {
+  function initTransformations() {
+    const section = document.querySelector(".transformations");
+    if (!section) return;
+
+    const cards = section.querySelectorAll(".transformation-card");
+    const previous = section.querySelector(".transformations-prev");
+    const next = section.querySelector(".transformations-next");
+
+    if (!cards.length || !previous || !next) return;
+
+    let currentIndex = 0;
+    let timer;
+
+    function showCard(newIndex) {
+      currentIndex = (newIndex + cards.length) % cards.length;
+
+      cards.forEach((card, index) => {
+        const isActive = index === currentIndex;
+
+        card.classList.toggle("active", isActive);
+        card.hidden = !isActive;
+      });
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+
+      if (cards.length > 1) {
+        timer = setInterval(() => {
+          showCard(currentIndex + 1);
+        }, 5000);
+      }
+    }
+
+    previous.addEventListener("click", () => {
+      showCard(currentIndex - 1);
+      startTimer();
+    });
+
+    next.addEventListener("click", () => {
+      showCard(currentIndex + 1);
+      startTimer();
+    });
+
+    previous.hidden = cards.length < 2;
+    next.hidden = cards.length < 2;
+
+    showCard(0);
+    startTimer();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTransformations);
+  } else {
+    initTransformations();
+  }
+})();
